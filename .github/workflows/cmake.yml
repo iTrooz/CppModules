@@ -18,9 +18,24 @@ env:
 jobs:
 
   windows-msvc:
-    runs-on: windows-latest
+    runs-on: windows-2025
+
+    env:
+      CXX: cl
 
     steps:
     - uses: actions/checkout@v4
 
-    - run: cmake --workflow --preset msvc
+    - run: cmake --workflow --preset default
+
+
+  windows-llvm:
+    runs-on: windows-2025
+
+    env:
+      CXX: clang++
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - run: cmake --workflow --preset default
