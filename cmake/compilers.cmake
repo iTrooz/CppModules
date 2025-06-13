@@ -1,3 +1,5 @@
+include(CheckSourceCompiles)
+
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 # /std:c++20 or newer implicitly enables modules
 # https://learn.microsoft.com/en-us/cpp/build/reference/experimental-module
@@ -10,9 +12,11 @@ endif()
 
 check_cxx_symbol_exists(__cpp_modules "" HAVE_CXX_MODULES)
 # Clang 19 didn't have __cpp_modules
-
 check_cxx_symbol_exists(__cpp_lib_modules "version" HAVE_STD_MODULES)
 
 if(NOT HAVE_STD_MODULES AND NOT HAVE_CXX_MODULES)
   message(FATAL_ERROR "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION} does not support C++20 modules")
 endif()
+
+check_source_compiles(CXX "import std;
+int main() { return 0; }" HAVE_CXX_IMPORT_STD)
