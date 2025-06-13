@@ -6,6 +6,7 @@ C++ modules with CMake require
 [recent C++ compilers](https://cmake.org/cmake/help/latest/manual/cmake-cxxmodules.7.html#compiler-support).
 
 The Ninja generator is required for C++ modules with CMake.
+[C++ import std](https://www.kitware.com/import-std-in-cmake-3-30/) may also be available.
 
 ## Reference
 
