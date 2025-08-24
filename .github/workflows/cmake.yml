@@ -12,7 +12,6 @@ on:
 env:
   CTEST_NO_TESTS_ACTION: error
   CTEST_PARALLEL_LEVEL: 0
-  CMAKE_BUILD_PARALLEL_LEVEL: 4
 
 
 jobs:
@@ -20,13 +19,12 @@ jobs:
   windows-msvc:
     runs-on: windows-2025
 
-    env:
-      CXX: cl
-
     steps:
-    - uses: actions/checkout@v4
+    - &checkout
+      uses: actions/checkout@v5
 
-    - run: cmake --workflow --preset default
+    - &default
+      run: cmake --workflow default
 
 
   windows-llvm:
@@ -36,6 +34,6 @@ jobs:
       CXX: clang++
 
     steps:
-    - uses: actions/checkout@v4
+    - *checkout
 
-    - run: cmake --workflow --preset default
+    - *default

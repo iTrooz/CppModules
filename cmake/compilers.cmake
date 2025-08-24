@@ -12,6 +12,9 @@ endif()
 
 check_cxx_symbol_exists(__cpp_modules "" HAVE_CXX_MODULES)
 # Clang 19 didn't have __cpp_modules
+
+# GCC 15+, ...
+message(STATUS "C++ modules CMAKE_CXX_COMPILER_IMPORT_STD: ${CMAKE_CXX_COMPILER_IMPORT_STD}")
 check_cxx_symbol_exists(__cpp_lib_modules "version" HAVE_STD_MODULES)
 
 if(NOT HAVE_STD_MODULES AND NOT HAVE_CXX_MODULES)

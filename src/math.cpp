@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cstdio>
 #include <cassert>
 
 import math;
@@ -13,7 +13,8 @@ int main(){
    assert(a + b == absum);
    assert(a - b == abdif);
 
-   std::cout << "OK: Modules demo" << std::endl;
+// used this instead of <iostream> to work with older compilers that may choke on <iostream> implicit includes
+   printf("OK: export module\n");
 
    return EXIT_SUCCESS;
 }
