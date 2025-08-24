@@ -16,8 +16,11 @@ env:
 
 jobs:
 
-  windows-msvc:
+  windows-gcc:
     runs-on: windows-2025
+
+    env:
+      CXX: g++
 
     steps:
     - &checkout
@@ -25,15 +28,3 @@ jobs:
 
     - &default
       run: cmake --workflow default
-
-
-  windows-llvm:
-    runs-on: windows-2025
-
-    env:
-      CXX: clang++
-
-    steps:
-    - *checkout
-
-    - *default
