@@ -37,6 +37,12 @@ TYPE CXX_MODULES
 FILES src/math.ixx
 )
 
+# add_subdirectory(CLI11 EXCLUDE_FROM_ALL)
+# target_link_libraries(math_mod CLI11::CLI11)
+
+find_package(CLI11 CONFIG QUIET)
+target_link_libraries(math_mod ${CLI11_LIBRARIES})
+
 add_test(NAME MathModule COMMAND math_mod)
 
 

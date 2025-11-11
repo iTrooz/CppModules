@@ -1,4 +1,13 @@
+module;
+
+#include <CLI/CLI.hpp>
+#include <CLI/App.hpp>
+
 export module math;
+
+export void foo(CLI::App *app) {
+
+}
 
 export int add(int a, int b){
     return a + b;
